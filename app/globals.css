@@ -1,5 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
+
+@theme {
+  /* Override default sans font to be Roboto everywhere */
+  --font-sans: Roboto, system-ui, sans-serif;
+
+  /* Custom fonts */
+  --font-roboto: Roboto, system-ui, sans-serif;
+
+  /* Custom color palette */
+  --color-un-blue: #009edb;
+  --color-trout: #495057;
+  --color-shuttle-gray: #596b7d;
+  --color-camouflage-green: #7d8471;
+  --color-pale-oyster: #9b8b7a;
+  --color-smoky: #6c5b7b;
+  --color-un-red: #a0665c;
+  --color-faded-jade: #4a7c7e;
+  --color-un-gray: #d7d1ca;
+}
 
 @custom-variant dark (&:is(.dark *));
 
