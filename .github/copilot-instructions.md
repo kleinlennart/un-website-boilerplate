@@ -8,3 +8,5 @@
 - use colors from `globals.css` integrated into Tailwind CSS theme
 - make sure to understand the general api and page structure before making singular changes
 - do not create parallel infrastructures, prefer global solutions, do not hardcode things where it would be hard to find.
+- left align
+- follow clear design hierarchy
