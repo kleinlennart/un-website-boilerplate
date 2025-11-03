@@ -1,5 +1,6 @@
 import { Github } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
     return (
@@ -170,6 +171,22 @@ export default function Home() {
                                 <p className="text-black font-bold">white</p>
                             </div>
                         </div>
+                    </section>
+
+                    {/* Components Section Header */}
+                    <section className="mt-16">
+                        <h2 className="text-3xl font-bold text-foreground mb-2">
+                            Components
+                        </h2>
+                        <p className="text-foreground mb-6">
+                            Explore the component library with reusable UI elements.
+                        </p>
+                        <Link
+                            href="/component-library"
+                            className="inline-flex items-center gap-2 text-un-blue hover:underline"
+                        >
+                            <span>View Full Component Library</span>
+                        </Link>
                     </section>
 
                     {/* Typography Showcase */}

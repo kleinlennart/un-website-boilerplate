@@ -4,6 +4,7 @@ import Image from "next/image";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { UNCard, UNCardContent, UNCardDescription, UNCardHeader, UNCardTitle } from "@/components/custom/UNCard";
+import { UNDropdown } from "@/components/custom/UNDropdown";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -12,8 +13,10 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useState } from "react";
 
 export default function ComponentsPage() {
+    const [selectedDonors, setSelectedDonors] = useState<string[]>([]);
     const countries = [
         { code: "USA", name: "United States", region: "Americas" },
         { code: "CHN", name: "China", region: "Asia" },
@@ -39,7 +42,7 @@ export default function ComponentsPage() {
                     {/* Header */}
                     <header className="mb-8">
                         <h1 className="text-3xl font-bold text-foreground">
-                            Components
+                            Components [Early Stage Development]
                         </h1>
                         <p className="mt-2 text-foreground">
                             Explore reusable components for UN web applications.
@@ -111,6 +114,36 @@ export default function ComponentsPage() {
                                     </p>
                                 </UNCardContent>
                             </UNCard>
+                        </div>
+                    </section>
+
+                    {/* UN Dropdown Example */}
+                    <section className="mb-12">
+                        <header className="mb-4">
+                            <h2 className="text-2xl font-bold text-foreground mb-2">
+                                UN Dropdown (Custom)
+                            </h2>
+                            <p className="text-sm text-gray-600">
+                                Searchable multi-select dropdown component
+                            </p>
+                        </header>
+                        <div className="max-w-md">
+                            <UNDropdown
+                                placeholder="Select donor(s)..."
+                                searchPlaceholder="Search donors..."
+                                options={[
+                                    { value: "adb", label: "African Development Bank" },
+                                    { value: "au", label: "African Union" },
+                                    { value: "australia", label: "Australia" },
+                                    { value: "austria", label: "Austria" },
+                                    { value: "belgium", label: "Belgium" },
+                                    { value: "gates", label: "Bill and Melinda Gates Foundation" },
+                                    { value: "canada", label: "Canada" },
+                                    { value: "denmark", label: "Denmark" },
+                                ]}
+                                value={selectedDonors}
+                                onChange={setSelectedDonors}
+                            />
                         </div>
                     </section>
 
