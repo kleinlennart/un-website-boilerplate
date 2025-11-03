@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { UNCard, UNCardContent, UNCardDescription, UNCardHeader, UNCardTitle } from "@/components/custom/UNCard";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -89,28 +89,28 @@ export default function ComponentsPage() {
                             </a>
                         </header>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <Card>
-                                <CardHeader>
-                                    <CardTitle>UN Sustainable Development</CardTitle>
-                                    <CardDescription>Goal 1: No Poverty</CardDescription>
-                                </CardHeader>
-                                <CardContent>
+                            <UNCard>
+                                <UNCardHeader>
+                                    <UNCardTitle>UN Sustainable Development</UNCardTitle>
+                                    <UNCardDescription>Goal 1: No Poverty</UNCardDescription>
+                                </UNCardHeader>
+                                <UNCardContent>
                                     <p className="text-sm">
                                         End poverty in all its forms everywhere by 2030.
                                     </p>
-                                </CardContent>
-                            </Card>
-                            <Card>
-                                <CardHeader>
-                                    <CardTitle>UN Sustainable Development</CardTitle>
-                                    <CardDescription>Goal 2: Zero Hunger</CardDescription>
-                                </CardHeader>
-                                <CardContent>
+                                </UNCardContent>
+                            </UNCard>
+                            <UNCard>
+                                <UNCardHeader>
+                                    <UNCardTitle>UN Sustainable Development</UNCardTitle>
+                                    <UNCardDescription>Goal 2: Zero Hunger</UNCardDescription>
+                                </UNCardHeader>
+                                <UNCardContent>
                                     <p className="text-sm">
                                         End hunger, achieve food security and improved nutrition.
                                     </p>
-                                </CardContent>
-                            </Card>
+                                </UNCardContent>
+                            </UNCard>
                         </div>
                     </section>
 

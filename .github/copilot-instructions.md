@@ -4,6 +4,7 @@
 - if you want to test run, use `npm run dev`
 - use `shadcn/ui` components (https://ui.shadcn.com/docs/components)
   - install via `npx shadcn@latest add`
+  - Don't modify ui/ components directly - they're meant to be copied once and left mostly unchanged. If you need variations, create wrapper components.
 - follow best practices for UI/UX and web development
 - use colors from `globals.css` integrated into Tailwind CSS theme, always reference as tailwind class
     - try to use the colors over other ones
@@ -11,3 +12,4 @@
 - do not create parallel infrastructures, prefer global solutions, do not hardcode things where it would be hard to find.
 - left align
 - follow clear design hierarchy
+
