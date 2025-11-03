@@ -1,26 +1,82 @@
+/**
+ * Global Stylesheet for Next.js Application with Tailwind CSS v4
+ * 
+ * This file serves as the application-wide stylesheet and is imported in the root layout.
+ * It follows Next.js best practices where global styles can be imported directly into
+ * any layout component in the app directory.
+ */
+
+/* Import Tailwind CSS v4 - provides all utility classes and base styles */
 @import "tailwindcss";
 
+/**
+ * Root-level CSS Variables (Application Theme Tokens)
+ * 
+ * Define custom CSS variables here that are NOT part of the Tailwind theme system.
+ * These are application-specific tokens that you reference directly in your CSS.
+ * 
+ * Standard Practice:
+ * - Use semantic names (e.g., --background, --foreground) rather than color names
+ * - Define light mode values as defaults in :root
+ * - Override for dark mode using media queries or data attributes
+ */
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
+/**
+ * Tailwind CSS v4 Theme Configuration
+ * 
+ * The @theme directive integrates custom CSS variables into Tailwind's theme system,
+ * making them accessible via utility classes like bg-background, text-foreground, etc.
+ * 
+ * The 'inline' option is REQUIRED when referencing other CSS variables with var().
+ * This ensures proper variable resolution at the time of theme definition.
+ * 
+ * Best Practice:
+ * - Use @theme inline when variables reference other variables
+ * - Prefix with --color-, --font-, --spacing-, etc. for proper Tailwind integration
+ * - These become available as: bg-background, text-foreground, etc.
+ */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/**
+ * Base Body Styles
+ * 
+ * Apply global styles using the custom CSS variables.
+ * 
+ * Font Handling:
+ * - Fonts are NOT set here because they're applied via className on <html> element
+ * - In layout.tsx, Roboto is loaded via next/font/google and applied globally
+ * - This is the Next.js recommended approach for optimal font loading
+ * 
+ * Why not set fonts here?
+ * - next/font/google automatically optimizes font loading (self-hosting, preloading)
+ * - Applying via className on <html> ensures fonts load before render
+ * - Prevents flash of unstyled text (FOUT) and layout shift
+ */
 body {
   background: var(--background);
   color: var(--foreground);
 }
+
+/**
+ * Scrollbar Management
+ * 
+ * Purpose: Prevent layout shifts when navigating between pages with different content heights
+ * 
+ * Strategy:
+ * 1. Always show scrollbar gutter (reserved space) on <html> to prevent horizontal shifts
+ * 2. Force scrollbar on <body> to ensure consistent spacing
+ * 3. Hide visual scrollbar in Webkit browsers while maintaining functionality
+ * 
+ * Result: Smooth navigation without content jumping left/right
+ * Browser Support: Works across all modern browsers
+ */
 
 /* Prevent layout shifts by always showing scrollbar */
 html {
