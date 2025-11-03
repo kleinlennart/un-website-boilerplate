@@ -43,6 +43,78 @@ export default function Home() {
                         <Github className="w-5 h-5" />
                         <span>View on GitHub</span>
                     </a>
+
+                    {/* Theme Colors Showcase */}
+                    <section className="mt-6">
+                        <h2 className="text-2xl font-bold text-foreground mb-6">
+                            Theme Colors
+                        </h2>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                            <div className="flex flex-col gap-2">
+                                <div className="h-20 rounded-lg bg-un-blue border border-gray-200" />
+                                <div>
+                                    <p className="text-sm font-medium text-foreground">UN Blue</p>
+                                    <p className="text-xs text-gray-600">#009EDB</p>
+                                </div>
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <div className="h-20 rounded-lg bg-faded-jade border border-gray-200" />
+                                <div>
+                                    <p className="text-sm font-medium text-foreground">Faded Jade</p>
+                                    <p className="text-xs text-gray-600">#4A7C7E</p>
+                                </div>
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <div className="h-20 rounded-lg bg-camouflage-green border border-gray-200" />
+                                <div>
+                                    <p className="text-sm font-medium text-foreground">Camouflage Green</p>
+                                    <p className="text-xs text-gray-600">#7D8471</p>
+                                </div>
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <div className="h-20 rounded-lg bg-pale-oyster border border-gray-200" />
+                                <div>
+                                    <p className="text-sm font-medium text-foreground">Pale Oyster</p>
+                                    <p className="text-xs text-gray-600">#9B8B7A</p>
+                                </div>
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <div className="h-20 rounded-lg bg-au-chico border border-gray-200" />
+                                <div>
+                                    <p className="text-sm font-medium text-foreground">Au Chico</p>
+                                    <p className="text-xs text-gray-600">#A0665C</p>
+                                </div>
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <div className="h-20 rounded-lg bg-smoky border border-gray-200" />
+                                <div>
+                                    <p className="text-sm font-medium text-foreground">Smoky</p>
+                                    <p className="text-xs text-gray-600">#6C5B7B</p>
+                                </div>
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <div className="h-20 rounded-lg bg-shuttle-gray border border-gray-200" />
+                                <div>
+                                    <p className="text-sm font-medium text-foreground">Shuttle Gray</p>
+                                    <p className="text-xs text-gray-600">#5A6C7D</p>
+                                </div>
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <div className="h-20 rounded-lg bg-trout border border-gray-200" />
+                                <div>
+                                    <p className="text-sm font-medium text-foreground">Trout</p>
+                                    <p className="text-xs text-gray-600">#495057</p>
+                                </div>
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <div className="h-20 rounded-lg bg-dusty-gray border border-gray-200" />
+                                <div>
+                                    <p className="text-sm font-medium text-foreground">Dusty Gray</p>
+                                    <p className="text-xs text-gray-600">#969696</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </main>
         </div>
