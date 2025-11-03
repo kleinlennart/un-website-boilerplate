@@ -51,67 +51,123 @@ export default function Home() {
                         </h2>
                         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                             <div className="flex flex-col gap-2">
-                                <div className="h-20 rounded-lg bg-un-blue border border-gray-200" />
+                                <div className="h-20 rounded-lg bg-un-blue" />
                                 <div>
                                     <p className="text-sm font-medium text-foreground">UN Blue</p>
                                     <p className="text-xs text-gray-600">#009EDB</p>
                                 </div>
                             </div>
                             <div className="flex flex-col gap-2">
-                                <div className="h-20 rounded-lg bg-faded-jade border border-gray-200" />
+                                <div className="h-20 rounded-lg bg-faded-jade" />
                                 <div>
                                     <p className="text-sm font-medium text-foreground">Faded Jade</p>
                                     <p className="text-xs text-gray-600">#4A7C7E</p>
                                 </div>
                             </div>
                             <div className="flex flex-col gap-2">
-                                <div className="h-20 rounded-lg bg-camouflage-green border border-gray-200" />
+                                <div className="h-20 rounded-lg bg-camouflage-green" />
                                 <div>
                                     <p className="text-sm font-medium text-foreground">Camouflage Green</p>
                                     <p className="text-xs text-gray-600">#7D8471</p>
                                 </div>
                             </div>
                             <div className="flex flex-col gap-2">
-                                <div className="h-20 rounded-lg bg-pale-oyster border border-gray-200" />
+                                <div className="h-20 rounded-lg bg-pale-oyster" />
                                 <div>
                                     <p className="text-sm font-medium text-foreground">Pale Oyster</p>
                                     <p className="text-xs text-gray-600">#9B8B7A</p>
                                 </div>
                             </div>
                             <div className="flex flex-col gap-2">
-                                <div className="h-20 rounded-lg bg-au-chico border border-gray-200" />
+                                <div className="h-20 rounded-lg bg-au-chico" />
                                 <div>
                                     <p className="text-sm font-medium text-foreground">Au Chico</p>
                                     <p className="text-xs text-gray-600">#A0665C</p>
                                 </div>
                             </div>
                             <div className="flex flex-col gap-2">
-                                <div className="h-20 rounded-lg bg-smoky border border-gray-200" />
+                                <div className="h-20 rounded-lg bg-smoky" />
                                 <div>
                                     <p className="text-sm font-medium text-foreground">Smoky</p>
                                     <p className="text-xs text-gray-600">#6C5B7B</p>
                                 </div>
                             </div>
                             <div className="flex flex-col gap-2">
-                                <div className="h-20 rounded-lg bg-shuttle-gray border border-gray-200" />
+                                <div className="h-20 rounded-lg bg-shuttle-gray" />
                                 <div>
                                     <p className="text-sm font-medium text-foreground">Shuttle Gray</p>
                                     <p className="text-xs text-gray-600">#5A6C7D</p>
                                 </div>
                             </div>
                             <div className="flex flex-col gap-2">
-                                <div className="h-20 rounded-lg bg-trout border border-gray-200" />
+                                <div className="h-20 rounded-lg bg-trout" />
                                 <div>
                                     <p className="text-sm font-medium text-foreground">Trout</p>
                                     <p className="text-xs text-gray-600">#495057</p>
                                 </div>
                             </div>
                             <div className="flex flex-col gap-2">
-                                <div className="h-20 rounded-lg bg-dusty-gray border border-gray-200" />
+                                <div className="h-20 rounded-lg bg-dusty-gray" />
                                 <div>
                                     <p className="text-sm font-medium text-foreground">Dusty Gray</p>
                                     <p className="text-xs text-gray-600">#969696</p>
                                 </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Grayscale Showcase */}
+                    <section className="mt-12">
+                        <h2 className="text-2xl font-bold text-foreground mb-2">
+                            Grayscale
+                        </h2>
+                        <a
+                            href="https://tailwindcss.com/docs/colors"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm text-un-blue hover:underline mb-6 inline-block"
+                        >
+                            from Tailwind CSS
+                        </a>
+                        <div className="space-y-0 overflow-hidden rounded-lg">
+                            <div className="bg-black p-6">
+                                <p className="text-white font-bold">black</p>
+                            </div>
+                            <div className="bg-gray-950 p-6">
+                                <p className="text-white font-bold">gray-950</p>
+                            </div>
+                            <div className="bg-gray-900 p-6">
+                                <p className="text-white font-bold">gray-900</p>
+                            </div>
+                            <div className="bg-gray-800 p-6">
+                                <p className="text-white font-bold">gray-800</p>
+                            </div>
+                            <div className="bg-gray-700 p-6">
+                                <p className="text-white font-bold">gray-700</p>
+                            </div>
+                            <div className="bg-gray-600 p-6">
+                                <p className="text-white font-bold">gray-600</p>
+                            </div>
+                            <div className="bg-gray-500 p-6">
+                                <p className="text-white font-bold">gray-500</p>
+                            </div>
+                            <div className="bg-gray-400 p-6">
+                                <p className="text-black font-bold">gray-400</p>
+                            </div>
+                            <div className="bg-gray-300 p-6">
+                                <p className="text-black font-bold">gray-300</p>
+                            </div>
+                            <div className="bg-gray-200 p-6">
+                                <p className="text-black font-bold">gray-200</p>
+                            </div>
+                            <div className="bg-gray-100 p-6">
+                                <p className="text-black font-bold">gray-100</p>
+                            </div>
+                            <div className="bg-gray-50 p-6">
+                                <p className="text-black font-bold">gray-50</p>
+                            </div>
+                            <div className="bg-white p-6">
+                                <p className="text-black font-bold">white</p>
                             </div>
                         </div>
                     </section>
