@@ -3,6 +3,15 @@
 import Image from "next/image";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function ComponentsPage() {
     const countries = [
@@ -62,6 +71,78 @@ export default function ComponentsPage() {
                             <Column field="name" header="Country" />
                             <Column field="region" header="Region" />
                         </DataTable>
+                    </section>
+
+                    {/* Shadcn Card Example */}
+                    <section className="mb-12">
+                        <header className="mb-4">
+                            <h2 className="text-2xl font-bold text-foreground mb-2">
+                                Shadcn Card
+                            </h2>
+                            <a
+                                href="https://ui.shadcn.com/docs/components/card"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-sm text-un-blue hover:underline inline-block"
+                            >
+                                View Documentation
+                            </a>
+                        </header>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <Card>
+                                <CardHeader>
+                                    <CardTitle>UN Sustainable Development</CardTitle>
+                                    <CardDescription>Goal 1: No Poverty</CardDescription>
+                                </CardHeader>
+                                <CardContent>
+                                    <p className="text-sm">
+                                        End poverty in all its forms everywhere by 2030.
+                                    </p>
+                                </CardContent>
+                            </Card>
+                            <Card>
+                                <CardHeader>
+                                    <CardTitle>UN Sustainable Development</CardTitle>
+                                    <CardDescription>Goal 2: Zero Hunger</CardDescription>
+                                </CardHeader>
+                                <CardContent>
+                                    <p className="text-sm">
+                                        End hunger, achieve food security and improved nutrition.
+                                    </p>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </section>
+
+                    {/* Shadcn Dropdown Example */}
+                    <section className="mb-12">
+                        <header className="mb-4">
+                            <h2 className="text-2xl font-bold text-foreground mb-2">
+                                Shadcn Dropdown Menu
+                            </h2>
+                            <a
+                                href="https://ui.shadcn.com/docs/components/dropdown-menu"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-sm text-un-blue hover:underline inline-block"
+                            >
+                                View Documentation
+                            </a>
+                        </header>
+                        <DropdownMenu>
+                            <DropdownMenuTrigger className="px-4 py-2 bg-un-blue text-white rounded-md hover:opacity-90">
+                                Select Region
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent>
+                                <DropdownMenuLabel>UN Regions</DropdownMenuLabel>
+                                <DropdownMenuSeparator />
+                                <DropdownMenuItem>Africa</DropdownMenuItem>
+                                <DropdownMenuItem>Americas</DropdownMenuItem>
+                                <DropdownMenuItem>Asia</DropdownMenuItem>
+                                <DropdownMenuItem>Europe</DropdownMenuItem>
+                                <DropdownMenuItem>Oceania</DropdownMenuItem>
+                            </DropdownMenuContent>
+                        </DropdownMenu>
                     </section>
                 </div>
             </main>
