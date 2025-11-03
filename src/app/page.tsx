@@ -1,3 +1,4 @@
+import { Github } from "lucide-react";
 import Image from "next/image";
 
 export default function Home() {
@@ -23,12 +24,25 @@ export default function Home() {
                         </h1>
                     </header>
 
+
                     {/* Content */}
                     <section>
                         <p className="leading-relaxed">
                             A modern, responsive foundation for United Nations web applications.
                         </p>
                     </section>
+
+
+                    {/* GitHub Link */}
+                    <a
+                        href="https://github.com/kleinlennart/un-website-boilerplate"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-5 inline-flex items-center gap-2 text-un-blue hover:underline"
+                    >
+                        <Github className="w-5 h-5" />
+                        <span>View on GitHub</span>
+                    </a>
                 </div>
             </main>
         </div>

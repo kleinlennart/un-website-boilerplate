@@ -1,6 +1,5 @@
-- use Next.js v15 (https://nextjs.org/docs)
-    - with App Router
-- ALWAYS use code for Tailwind CSS v4
+- use Next.js v16 using App Router (https://nextjs.org/docs)
+- ALWAYS use code for Tailwind CSS v4.1
   - make sure to consult https://tailwindcss.com/docs/ to update your knowledge since many things that you think would work are actually outdated
 - if you want to test run, use `npm run dev`
 - use `shadcn/ui` components (https://ui.shadcn.com/docs/components)
