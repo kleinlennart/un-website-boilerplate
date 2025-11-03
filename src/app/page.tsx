@@ -18,14 +18,14 @@ export default function Home() {
 
                     {/* Header */}
                     <header className="mb-5">
-                        <h1 className="text-xl sm:text-2xl md:text-3xl font-semibold text-foreground">
+                        <h1 className="text-3xl font-bold text-foreground">
                             UN Website Boilerplate
                         </h1>
                     </header>
 
                     {/* Content */}
                     <section>
-                        <p className="text-muted-foreground leading-relaxed">
+                        <p className="leading-relaxed">
                             A modern, responsive foundation for United Nations web applications.
                         </p>
                     </section>

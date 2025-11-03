@@ -19,10 +19,13 @@
  * - Use semantic names (e.g., --background, --foreground) rather than color names
  * - Define light mode values as defaults in :root
  * - Override for dark mode using media queries or data attributes
+ *
+ *  background = The surface/canvas color
+ *  foreground = The primary text/content color that sits on that background
  */
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
 }
 
 /**
