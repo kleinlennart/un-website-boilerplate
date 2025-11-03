@@ -115,6 +115,70 @@ export default function Home() {
                             </div>
                         </div>
                     </section>
+
+                    {/* Typography Showcase */}
+                    <section className="mt-12">
+                        <h2 className="text-2xl font-bold text-foreground mb-2">
+                            Typography Scale
+                        </h2>
+                        <p className="text-sm text-gray-600 mb-6">Roboto Font Family</p>
+                        <div className="space-y-4">
+                            <div className="border-b border-gray-200 pb-4">
+                                <p className="text-xs text-gray-600 mb-2">text-xs · 0.75rem (12px)</p>
+                                <p className="text-xs text-foreground">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
+                            <div className="border-b border-gray-200 pb-4">
+                                <p className="text-xs text-gray-600 mb-2">text-sm · 0.875rem (14px)</p>
+                                <p className="text-sm text-foreground">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
+                            <div className="border-b border-gray-200 pb-4">
+                                <p className="text-xs text-gray-600 mb-2">text-base · 1rem (16px)</p>
+                                <p className="text-base text-foreground">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
+                            <div className="border-b border-gray-200 pb-4">
+                                <p className="text-xs text-gray-600 mb-2">text-lg · 1.125rem (18px)</p>
+                                <p className="text-lg text-foreground">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
+                            <div className="border-b border-gray-200 pb-4">
+                                <p className="text-xs text-gray-600 mb-2">text-xl · 1.25rem (20px)</p>
+                                <p className="text-xl text-foreground">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
+                            <div className="border-b border-gray-200 pb-4">
+                                <p className="text-xs text-gray-600 mb-2">text-2xl · 1.5rem (24px)</p>
+                                <p className="text-2xl text-foreground">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
+                            <div className="border-b border-gray-200 pb-4">
+                                <p className="text-xs text-gray-600 mb-2">text-3xl · 1.875rem (30px)</p>
+                                <p className="text-3xl text-foreground">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
+                            <div className="border-b border-gray-200 pb-4">
+                                <p className="text-xs text-gray-600 mb-2">text-4xl · 2.25rem (36px)</p>
+                                <p className="text-4xl text-foreground">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
+                            <div>
+                                <p className="text-xs text-gray-600 mb-2">text-5xl · 3rem (48px)</p>
+                                <p className="text-5xl text-foreground">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </main>
         </div>
