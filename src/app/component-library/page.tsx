@@ -161,37 +161,6 @@ export default function ComponentsPage() {
                         </div>
                     </section>
 
-                    {/* Shadcn Dropdown Example */}
-                    <section className="mb-12">
-                        <header className="mb-4">
-                            <h2 className="text-2xl font-bold text-foreground mb-2">
-                                Shadcn Dropdown Menu
-                            </h2>
-                            <a
-                                href="https://ui.shadcn.com/docs/components/dropdown-menu"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-sm text-un-blue hover:underline inline-block"
-                            >
-                                View Documentation
-                            </a>
-                        </header>
-                        <DropdownMenu>
-                            <DropdownMenuTrigger className="px-4 py-2 bg-un-blue text-white rounded-md hover:opacity-90">
-                                Select Region
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent>
-                                <DropdownMenuLabel>UN Regions</DropdownMenuLabel>
-                                <DropdownMenuSeparator />
-                                <DropdownMenuItem>Africa</DropdownMenuItem>
-                                <DropdownMenuItem>Americas</DropdownMenuItem>
-                                <DropdownMenuItem>Asia</DropdownMenuItem>
-                                <DropdownMenuItem>Europe</DropdownMenuItem>
-                                <DropdownMenuItem>Oceania</DropdownMenuItem>
-                            </DropdownMenuContent>
-                        </DropdownMenu>
-                    </section>
-
                     {/* Lucide Icons Reference */}
                     <section className="mb-12">
                         <header className="mb-4">
