@@ -1,4 +1,5 @@
-- use Next.js v15.4 (https://nextjs.org/docs)
+- use Next.js v15 (https://nextjs.org/docs)
+    - with App Router
 - ALWAYS use code for Tailwind CSS v4
   - make sure to consult https://tailwindcss.com/docs/ to update your knowledge since many things that you think would work are actually outdated
 - if you want to test run, use `npm run dev`
