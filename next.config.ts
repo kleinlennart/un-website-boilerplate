@@ -1,9 +1,11 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
+    output: 'export',
     trailingSlash: true,
-    basePath: '', // Explicitly set to empty string for root deployment
-    assetPrefix: '', // Explicitly set to empty string for root deployment
+    // FIXME: Change to empty if CNAMEed to TLD
+    basePath: '/un-website-boilerplate',
+    assetPrefix: '/un-website-boilerplate',
     images: {
         unoptimized: true
     },
