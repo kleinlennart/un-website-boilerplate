@@ -1,13 +1,21 @@
 import type { NextConfig } from 'next'
 
+// Set to your repository name for GitHub Pages, or '' for custom domain
+const basePath = process.env.BASE_PATH || '/un-website-boilerplate'
+
+// NOTE: use basePath variable for Image src 
+// https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath#images
+
 const nextConfig: NextConfig = {
     output: 'export',
     trailingSlash: true,
-    // FIXME: Change to empty if CNAMEed to TLD
-    basePath: '/un-website-boilerplate',
-    assetPrefix: '/un-website-boilerplate',
+    basePath: basePath,
+    assetPrefix: basePath,
     images: {
         unoptimized: true
+    },
+    env: {
+        NEXT_PUBLIC_BASE_PATH: basePath,
     },
 }
 

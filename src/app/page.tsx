@@ -1,5 +1,8 @@
 import { Github } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 export default function Home() {
     return (
@@ -7,9 +10,11 @@ export default function Home() {
             <main className="min-h-screen bg-background flex justify-center px-4 sm:px-6">
                 <div className="max-w-2xl lg:max-w-3xl py-8">
                     {/* Logo */}
-                    <img
-                        src="/images/UN_Logo_Horizontal_Colour_English.svg"
+                    <Image
+                        src={`${basePath}/images/UN_Logo_Horizontal_Colour_English.svg`}
                         alt="UN Logo"
+                        width={200}
+                        height={48}
                         className="h-10 sm:h-12 w-auto select-none mb-12"
                         draggable={false}
                     />
