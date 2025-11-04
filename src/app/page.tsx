@@ -9,7 +9,7 @@ export default function Home() {
                 <div className="max-w-2xl lg:max-w-3xl py-8">
                     {/* Logo */}
                     <Image
-                        src="/images/UN Logo_Horizontal_Colour_English.svg"
+                        src="/images/UN_Logo_Horizontal_Colour_English.svg"
                         alt="UN Logo"
                         width={200}
                         height={48}
