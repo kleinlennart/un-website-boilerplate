@@ -1,13 +1,19 @@
 import * as React from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
 /**
  * UNCard Component
- * 
+ *
  * A custom card component that extends shadcn/ui Card primitive.
  * Removes the default drop shadow for a cleaner UN design aesthetic.
- * 
+ *
  * @example
  * ```tsx
  * <UNCard>
@@ -20,14 +26,10 @@ import { cn } from "@/lib/utils";
  * ```
  */
 const UNCard = React.forwardRef<
-    HTMLDivElement,
-    React.HTMLAttributes<HTMLDivElement>
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-    <Card
-        ref={ref}
-        className={cn("shadow-none", className)}
-        {...props}
-    />
+  <Card ref={ref} className={cn("shadow-none", className)} {...props} />
 ));
 UNCard.displayName = "UNCard";
 
