@@ -11,6 +11,8 @@ const nextConfig: NextConfig = {
     trailingSlash: true,
     basePath: basePath,
     assetPrefix: basePath,
+    reactStrictMode: true,
+    poweredByHeader: false,
     images: {
         unoptimized: true
     },
