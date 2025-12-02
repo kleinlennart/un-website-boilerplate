@@ -27,8 +27,34 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Good to know
+## Maintenance
 
+### Check for issues
+```bash
+npm audit          # Security vulnerabilities
+npm outdated       # Outdated packages
+npm run lint       # ESLint errors
+npx tsc --noEmit   # TypeScript errors
+```
+
+### Update packages
+```bash
+npm update                                              # Safe patch/minor updates
+npm install next@latest eslint-config-next@latest       # Update Next.js
+```
+
+### Update shadcn/ui components
+```bash
+npx shadcn@latest diff                                  # Check for component updates
+npx shadcn@latest add <component-name> --overwrite      # Update specific component
+```
+
+### Clean install (if issues occur)
+```bash
+rm -rf node_modules .next && npm install
+```
+
+## Good to know
 
 - use `npx shadcn@latest add <component-name>` when you need to add components.
 
