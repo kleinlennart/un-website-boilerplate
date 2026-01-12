@@ -7,7 +7,7 @@ interface Props {
   children?: React.ReactNode;
 }
 
-export const SITE_TITLE = "UN Website";
+export const SITE_TITLE = "UN Web App";
 export const SITE_SUBTITLE = "A modern web application for the United Nations";
 
 export function Header({ user, children }: Props) {
@@ -21,11 +21,13 @@ export function Header({ user, children }: Props) {
         </div>
       </Link>
       <div className="flex items-center gap-4">
-        {user && (
+        {user ? (
           <>
             {user.entity && <span className="rounded bg-gray-100 px-2 py-1 text-sm text-gray-600">{user.entity}</span>}
             <UserMenu email={user.email} />
           </>
+        ) : (
+          <Link href="/login" className="text-sm text-un-blue hover:underline">Login</Link>
         )}
         {children}
       </div>

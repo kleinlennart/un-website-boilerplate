@@ -3,9 +3,9 @@ import { query } from "@/lib/db";
 
 interface DocumentRow {
   symbol: string;
-  title: string | null;
-  body: string | null;
-  year: number | null;
+  proper_title: string | null;
+  issuing_body: string | null;
+  date_year: number | null;
 }
 
 export async function GET(req: NextRequest) {
@@ -13,12 +13,17 @@ export async function GET(req: NextRequest) {
   if (!q || q.length < 2) return NextResponse.json([]);
 
   const rows = await query<DocumentRow>(
-    `SELECT symbol, title, body, year FROM documents
-     WHERE symbol ILIKE $1 || '%' OR title ILIKE '%' || $1 || '%'
-     ORDER BY CASE WHEN symbol ILIKE $1 || '%' THEN 0 ELSE 1 END, year DESC NULLS LAST
+    `SELECT symbol, proper_title, issuing_body, date_year FROM public.documents
+     WHERE symbol ILIKE $1 || '%' OR proper_title ILIKE '%' || $1 || '%'
+     ORDER BY CASE WHEN symbol ILIKE $1 || '%' THEN 0 ELSE 1 END, date_year DESC NULLS LAST
      LIMIT 20`,
     [q]
   );
 
-  return NextResponse.json(rows.map((r) => ({ symbol: r.symbol, title: r.title, body: r.body, year: r.year })));
+  return NextResponse.json(rows.map((r) => ({
+    symbol: r.symbol,
+    title: r.proper_title?.replace(/\s*:\s*$/, "").trim() || null,
+    body: r.issuing_body,
+    year: r.date_year,
+  })));
 }

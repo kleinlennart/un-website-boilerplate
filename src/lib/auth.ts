@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { randomBytes, createHmac, timingSafeEqual } from "crypto";
 import { query } from "./db";
+import { tables } from "./config";
 
 const AUTH_SECRET = process.env.AUTH_SECRET;
 if (!AUTH_SECRET && process.env.NODE_ENV === "production") {
@@ -20,17 +21,13 @@ export function generateToken(): string {
 export async function createMagicToken(email: string): Promise<string> {
   const token = generateToken();
   const expiresAt = new Date(Date.now() + 15 * 60 * 1000);
-  await query(
-    `INSERT INTO auth.magic_tokens (token, email, expires_at) VALUES ($1, $2, $3)`,
-    [token, email.toLowerCase(), expiresAt]
-  );
+  await query(`INSERT INTO ${tables.magic_tokens} (token, email, expires_at) VALUES ($1, $2, $3)`, [token, email.toLowerCase(), expiresAt]);
   return token;
 }
 
 export async function verifyMagicToken(token: string): Promise<string | null> {
   const rows = await query<{ email: string }>(
-    `UPDATE auth.magic_tokens SET used_at = NOW() 
-     WHERE token = $1 AND expires_at > NOW() AND used_at IS NULL RETURNING email`,
+    `UPDATE ${tables.magic_tokens} SET used_at = NOW() WHERE token = $1 AND expires_at > NOW() AND used_at IS NULL RETURNING email`,
     [token]
   );
   return rows[0]?.email || null;
@@ -39,9 +36,9 @@ export async function verifyMagicToken(token: string): Promise<string | null> {
 export async function upsertUser(email: string, entity?: string): Promise<string> {
   const rows = await query<{ id: string }>(
     entity
-      ? `INSERT INTO auth.users (email, entity, last_login_at) VALUES ($1, $2, NOW()) 
-         ON CONFLICT (email) DO UPDATE SET entity = COALESCE(auth.users.entity, $2), last_login_at = NOW() RETURNING id`
-      : `INSERT INTO auth.users (email, last_login_at) VALUES ($1, NOW()) 
+      ? `INSERT INTO ${tables.users} (email, entity, last_login_at) VALUES ($1, $2, NOW()) 
+         ON CONFLICT (email) DO UPDATE SET entity = COALESCE(${tables.users}.entity, $2), last_login_at = NOW() RETURNING id`
+      : `INSERT INTO ${tables.users} (email, last_login_at) VALUES ($1, NOW()) 
          ON CONFLICT (email) DO UPDATE SET last_login_at = NOW() RETURNING id`,
     entity ? [email.toLowerCase(), entity] : [email.toLowerCase()]
   );
@@ -99,7 +96,7 @@ export async function getCurrentUser() {
   const session = await getSession();
   if (!session) return null;
   const rows = await query<{ id: string; email: string; entity: string | null }>(
-    `SELECT id, email, entity FROM auth.users WHERE id = $1`,
+    `SELECT id, email, entity FROM ${tables.users} WHERE id = $1`,
     [session.userId]
   );
   if (!rows[0]) return null;

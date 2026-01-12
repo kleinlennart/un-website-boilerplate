@@ -67,7 +67,7 @@ function VerifyContent() {
 export default function VerifyPage() {
   return (
     <main className="flex min-h-screen items-center justify-center bg-white">
-      <div className="w-full max-w-sm px-6">
+      <div className="w-full max-w-xs px-6">
         <h1 className="mb-6 text-xl font-bold text-gray-900">Complete Sign In</h1>
         <Suspense fallback={<p className="text-gray-500">Loading...</p>}><VerifyContent /></Suspense>
       </div>

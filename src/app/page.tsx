@@ -1,8 +1,7 @@
 import { Github } from "lucide-react";
-import Link from "next/link";
 import { Header } from "@/components/Header";
 import { getCurrentUser } from "@/lib/auth";
-import { DocumentSearch } from "@/components/DocumentSearch";
+import { SearchDemo } from "@/components/SearchDemo";
 
 export default async function Home() {
   const user = await getCurrentUser();
@@ -18,22 +17,10 @@ export default async function Home() {
           <span>View original template on GitHub</span>
         </a>
 
-        {/* Components Section */}
+        {/* Entity and Document Search */}
         <section className="mt-10">
-          <h2 className="mb-2 text-2xl font-bold text-foreground">Components</h2>
-          <p className="mb-6 text-gray-600">Reusable UI elements included in this template.</p>
-
-          {/* Document Search Component */}
-          <div className="rounded-lg border border-gray-200 bg-white p-6 mb-6">
-            <h3 className="mb-2 text-lg font-semibold text-foreground">Document Search</h3>
-            <p className="mb-4 text-sm text-gray-500">Autocomplete dropdown searching the documents table by symbol or title.</p>
-            <DocumentSearch placeholder="Search by symbol or title..." />
-            <p className="mt-3 text-xs text-gray-400">Try: A/RES/... or search by keywords in title</p>
-          </div>
-
-          <Link href="/component-library" className="inline-flex items-center gap-2 text-un-blue hover:underline">
-            <span>View Full Component Library →</span>
-          </Link>
+          <h2 className="mb-6 text-2xl font-bold text-foreground">Entity and Document Search</h2>
+          <SearchDemo />
         </section>
 
         {/* Theme Colors Showcase */}
