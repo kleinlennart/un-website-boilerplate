@@ -11,6 +11,7 @@ Based on: https://github.com/kleinlennart/un-website-boilerplate
 - PostgreSQL session/user storage
 - Protected routes via middleware
 - Entity selection on first login
+- Document search autocomplete
 
 ## Setup
 
@@ -56,7 +57,8 @@ npm run dev
 
 - **Site title/subtitle**: Edit `src/components/Header.tsx`
 - **Email domain restriction**: Edit `isValidUnEmail()` in `src/lib/auth.ts`
-- **Entity list**: Implement `src/app/api/entities/route.ts`
+- **Entity list**: Populate `entities` table in DB
+- **Documents search**: Populate `documents` table in DB
 - **Protected routes**: Edit `PUBLIC_PATHS` in `src/middleware.ts`
 
 ## File Structure
@@ -64,11 +66,15 @@ npm run dev
 ```
 src/
 ├── app/
-│   ├── api/auth/          # Auth API routes
+│   ├── api/
+│   │   ├── auth/          # Auth API routes
+│   │   ├── documents/     # Document search & bodies
+│   │   └── entities/      # Entity list
 │   ├── login/             # Login page
 │   ├── verify/            # Token verification
 │   └── page.tsx           # Protected home page
 ├── components/
+│   ├── DocumentSearch.tsx # Autocomplete search
 │   ├── Header.tsx         # Site header with user menu
 │   └── UserMenu.tsx       # Logout button
 ├── lib/
@@ -77,7 +83,7 @@ src/
 │   └── mail.ts            # Magic link emails
 └── middleware.ts          # Route protection
 sql/
-└── auth_tables.sql        # Database schema
+└── auth_tables.sql        # Database schema (auth + entities + documents)
 ```
 
 ## Maintenance

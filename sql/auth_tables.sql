@@ -1,6 +1,7 @@
--- Auth tables for magic link login
+-- Database schema for UN Website template with auth
 -- Run this in your PostgreSQL database
 
+-- Auth schema
 CREATE SCHEMA IF NOT EXISTS auth;
 
 CREATE TABLE IF NOT EXISTS auth.users (
@@ -19,3 +20,20 @@ CREATE TABLE IF NOT EXISTS auth.magic_tokens (
 );
 
 CREATE INDEX IF NOT EXISTS idx_magic_tokens_expires ON auth.magic_tokens (expires_at);
+
+-- Public tables for entities and documents
+CREATE TABLE IF NOT EXISTS entities (
+  id SERIAL PRIMARY KEY,
+  name TEXT UNIQUE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS documents (
+  symbol TEXT PRIMARY KEY,
+  title TEXT,
+  body TEXT,
+  year INT,
+  link TEXT
+);
+
+CREATE INDEX IF NOT EXISTS idx_documents_title ON documents USING gin(to_tsvector('english', title));
+CREATE INDEX IF NOT EXISTS idx_documents_year ON documents (year DESC NULLS LAST);
