@@ -12,20 +12,32 @@ export default async function Home() {
       <div className="mx-auto max-w-4xl">
         <Header user={user} />
 
-        {/* Document Search Demo */}
-        <section className="mt-8 rounded-lg border border-gray-200 bg-white p-6">
-          <h2 className="mb-4 text-lg font-semibold text-foreground">Document Search</h2>
-          <DocumentSearch placeholder="Search by symbol or title..." />
-        </section>
-
         {/* GitHub Link */}
-        <a href="https://github.com/kleinlennart/un-website-boilerplate" target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 text-un-blue hover:underline">
+        <a href="https://github.com/kleinlennart/un-website-boilerplate" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-un-blue hover:underline">
           <Github className="h-5 w-5" />
           <span>View original template on GitHub</span>
         </a>
 
-        {/* Theme Colors Showcase */}
+        {/* Components Section */}
         <section className="mt-10">
+          <h2 className="mb-2 text-2xl font-bold text-foreground">Components</h2>
+          <p className="mb-6 text-gray-600">Reusable UI elements included in this template.</p>
+
+          {/* Document Search Component */}
+          <div className="rounded-lg border border-gray-200 bg-white p-6 mb-6">
+            <h3 className="mb-2 text-lg font-semibold text-foreground">Document Search</h3>
+            <p className="mb-4 text-sm text-gray-500">Autocomplete dropdown searching the documents table by symbol or title.</p>
+            <DocumentSearch placeholder="Search by symbol or title..." />
+            <p className="mt-3 text-xs text-gray-400">Try: A/RES/... or search by keywords in title</p>
+          </div>
+
+          <Link href="/component-library" className="inline-flex items-center gap-2 text-un-blue hover:underline">
+            <span>View Full Component Library →</span>
+          </Link>
+        </section>
+
+        {/* Theme Colors Showcase */}
+        <section className="mt-12">
           <h2 className="mb-6 text-2xl font-bold text-foreground">Theme Colors</h2>
           <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
             {[
@@ -78,7 +90,7 @@ export default async function Home() {
         </section>
 
         {/* Typography Showcase */}
-        <section className="mt-12">
+        <section className="mt-12 mb-12">
           <h2 className="mb-2 text-2xl font-bold text-foreground">Typography Scale</h2>
           <p className="mb-6 text-sm text-gray-600">Roboto Font Family</p>
           <div className="space-y-4">
@@ -98,15 +110,6 @@ export default async function Home() {
               </div>
             ))}
           </div>
-        </section>
-
-        {/* Components Link */}
-        <section className="mt-16 mb-12">
-          <h2 className="mb-2 text-3xl font-bold text-foreground">Components</h2>
-          <p className="mb-6 text-foreground">Explore the component library with reusable UI elements.</p>
-          <Link href="/component-library" className="inline-flex items-center gap-2 text-un-blue hover:underline">
-            <span>View Full Component Library</span>
-          </Link>
         </section>
       </div>
     </main>

@@ -1,6 +1,7 @@
 "use client";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useState, useEffect, Suspense } from "react";
+import { EntitySearch } from "@/components/EntitySearch";
 
 function VerifyContent() {
   const searchParams = useSearchParams();
@@ -9,9 +10,7 @@ function VerifyContent() {
   const [loading, setLoading] = useState(false);
   const [checking, setChecking] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [entities, setEntities] = useState<string[]>([]);
   const [selectedEntity, setSelectedEntity] = useState("");
-  const [otherEntity, setOtherEntity] = useState("");
   const [hasExistingEntity, setHasExistingEntity] = useState(false);
   const [userEmail, setUserEmail] = useState<string | null>(null);
 
@@ -27,13 +26,9 @@ function VerifyContent() {
       .catch(() => { setError("Failed to verify token"); setChecking(false); });
   }, [token]);
 
-  useEffect(() => {
-    if (!hasExistingEntity && !checking) fetch("/api/entities").then(r => r.json()).then(d => setEntities(d.entities || []));
-  }, [hasExistingEntity, checking]);
-
   const handleVerify = async () => {
     if (!token) return;
-    const entity = hasExistingEntity ? undefined : (selectedEntity === "Other" ? otherEntity.trim() : selectedEntity);
+    const entity = hasExistingEntity ? undefined : selectedEntity.trim();
     if (!hasExistingEntity && !entity) { setError("Please select your entity"); return; }
     setLoading(true);
     const res = await fetch("/api/auth/verify", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ token, entity }) });
@@ -43,6 +38,7 @@ function VerifyContent() {
 
   if (!token) return <p className="text-red-600">Missing verification token.</p>;
   if (checking) return <p className="text-gray-500">Verifying...</p>;
+
   if (hasExistingEntity) return (
     <div className="space-y-6">
       <p className="text-sm text-gray-600">Signing in as <span className="font-medium">{userEmail}</span></p>
@@ -58,15 +54,10 @@ function VerifyContent() {
       {userEmail && <p className="text-sm text-gray-600">Signing in as <span className="font-medium">{userEmail}</span></p>}
       <div>
         <label className="mb-2 block text-sm font-medium text-gray-700">Select your entity</label>
-        <select value={selectedEntity} onChange={(e) => setSelectedEntity(e.target.value)} className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:border-un-blue focus:outline-none focus:ring-1 focus:ring-un-blue">
-          <option value="">Choose...</option>
-          {entities.map(e => <option key={e} value={e}>{e}</option>)}
-          <option value="Other">Other</option>
-        </select>
+        <EntitySearch value={selectedEntity} onChange={setSelectedEntity} placeholder="Search or enter entity..." />
       </div>
-      {selectedEntity === "Other" && <input type="text" placeholder="Enter your entity name" value={otherEntity} onChange={(e) => setOtherEntity(e.target.value)} className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:border-un-blue focus:outline-none focus:ring-1 focus:ring-un-blue" />}
       {error && <p className="text-sm text-red-600">{error}</p>}
-      <button onClick={handleVerify} disabled={loading || !selectedEntity || (selectedEntity === "Other" && !otherEntity.trim())} className="w-full rounded-lg bg-un-blue px-4 py-2.5 text-sm font-medium text-white hover:opacity-90 disabled:opacity-50">
+      <button onClick={handleVerify} disabled={loading || !selectedEntity.trim()} className="w-full rounded-lg bg-un-blue px-4 py-2.5 text-sm font-medium text-white hover:opacity-90 disabled:opacity-50">
         {loading ? "Signing in..." : "Complete Sign In"}
       </button>
     </div>

@@ -21,7 +21,12 @@ export function Header({ user, children }: Props) {
         </div>
       </Link>
       <div className="flex items-center gap-4">
-        {user && <UserMenu email={user.email} />}
+        {user && (
+          <>
+            {user.entity && <span className="rounded bg-gray-100 px-2 py-1 text-sm text-gray-600">{user.entity}</span>}
+            <UserMenu email={user.email} />
+          </>
+        )}
         {children}
       </div>
     </div>
