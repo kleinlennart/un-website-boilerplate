@@ -21,20 +21,3 @@ CREATE TABLE IF NOT EXISTS myapp.magic_tokens (
 );
 
 CREATE INDEX IF NOT EXISTS idx_magic_tokens_expires ON myapp.magic_tokens (expires_at);
-
--- Public tables for entities and documents (shared across apps)
-CREATE TABLE IF NOT EXISTS public.entities (
-  id SERIAL PRIMARY KEY,
-  name TEXT UNIQUE NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS public.documents (
-  symbol TEXT PRIMARY KEY,
-  title TEXT,
-  body TEXT,
-  year INT,
-  link TEXT
-);
-
-CREATE INDEX IF NOT EXISTS idx_documents_title ON public.documents USING gin(to_tsvector('english', title));
-CREATE INDEX IF NOT EXISTS idx_documents_year ON public.documents (year DESC NULLS LAST);
