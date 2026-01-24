@@ -4,6 +4,21 @@ https://github.com/kleinlennart/un-website-boilerplate
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Branches
+
+This template has two variants:
+
+| Branch | Description |
+|--------|-------------|
+| `main` | Static site, no authentication |
+| `template-with-auth` | Adds magic link auth, PostgreSQL integration, entity/document search |
+
+When creating from this template, check "Include all branches" to get both. Then switch if needed:
+
+```bash
+git checkout template-with-auth
+```
+
 ## Getting Started
 
 First, run the development server:
