@@ -4,6 +4,21 @@ A Next.js template with UN branding and magic link authentication.
 
 Based on: https://github.com/kleinlennart/un-website-boilerplate
 
+## Branches
+
+This template has two variants:
+
+| Branch | Description |
+|--------|-------------|
+| `main` | Static site, no authentication |
+| `template-with-auth` | Adds magic link auth, PostgreSQL integration, entity/document search |
+
+When creating from this template, check "Include all branches" to get both. Then switch if needed:
+
+```bash
+git checkout template-with-auth
+```
+
 ## Features
 
 - UN branding (logo, colors, Roboto font)
