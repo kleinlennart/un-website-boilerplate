@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { requestMagicLinkAction } from "@/lib/actions";
+import { requestMagicLinkAction } from "@/lib/auth/server";
 
 export function LoginForm() {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "sent" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "sent" | "error">(
+    "idle",
+  );
   const [errorMsg, setErrorMsg] = useState("");
 
   async function handleSubmit(e: React.FormEvent) {
@@ -24,7 +26,9 @@ export function LoginForm() {
   return (
     <div className="w-full max-w-sm">
       <h2 className="mb-2 text-xl font-semibold text-foreground">Sign In</h2>
-      <p className="mb-6 text-sm text-gray-500">Enter your email address to receive a sign-in link</p>
+      <p className="mb-6 text-sm text-gray-500">
+        Enter your email address to receive a sign-in link
+      </p>
       {status === "sent" ? (
         <div className="rounded-lg bg-green-50 p-4 text-green-800">
           <p className="font-medium">Please check your e-mail</p>
@@ -40,7 +44,9 @@ export function LoginForm() {
             required
             className="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm focus:border-un-blue focus:ring-1 focus:ring-un-blue focus:outline-none"
           />
-          {status === "error" && <p className="text-sm text-red-600">{errorMsg}</p>}
+          {status === "error" && (
+            <p className="text-sm text-red-600">{errorMsg}</p>
+          )}
           <button
             type="submit"
             disabled={status === "loading"}

@@ -3,7 +3,10 @@
 import { useSearchParams, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { EntityCombobox, type EntityOption } from "./EntityCombobox";
-import { checkEntityForTokenAction, verifyMagicTokenAction } from "@/lib/actions";
+import {
+  checkEntityForTokenAction,
+  verifyMagicTokenAction,
+} from "@/lib/auth/server";
 
 interface Props {
   entities: EntityOption[];
@@ -64,7 +67,8 @@ export function VerifyForm({ entities }: Props) {
     router.push("/");
   };
 
-  if (!token) return <p className="text-red-600">Missing verification token.</p>;
+  if (!token)
+    return <p className="text-red-600">Missing verification token.</p>;
   if (checking) return <p className="text-gray-500">Verifying...</p>;
 
   if (hasExistingEntity) {
@@ -93,8 +97,15 @@ export function VerifyForm({ entities }: Props) {
         </p>
       )}
       <div>
-        <label className="mb-2 block text-sm font-medium text-gray-700">Select your organisational entity</label>
-        <EntityCombobox value={selectedEntity} onChange={setSelectedEntity} entities={entities} placeholder="Choose entity..." />
+        <label className="mb-2 block text-sm font-medium text-gray-700">
+          Select your organisational entity
+        </label>
+        <EntityCombobox
+          value={selectedEntity}
+          onChange={setSelectedEntity}
+          entities={entities}
+          placeholder="Choose entity..."
+        />
       </div>
       {selectedEntity === "Other – Please Specify" && (
         <input
@@ -108,7 +119,11 @@ export function VerifyForm({ entities }: Props) {
       {error && <p className="text-sm text-red-600">{error}</p>}
       <button
         onClick={handleVerify}
-        disabled={loading || !selectedEntity || (selectedEntity === "Other – Please Specify" && !otherEntity.trim())}
+        disabled={
+          loading ||
+          !selectedEntity ||
+          (selectedEntity === "Other – Please Specify" && !otherEntity.trim())
+        }
         className="w-full rounded-lg bg-un-blue px-4 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
       >
         {loading ? "Signing in..." : "Complete sign-in"}

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { EntityChangeDialog } from "./EntityChangeDialog";
 import type { EntityOption } from "./EntityCombobox";
-import { logoutAction } from "@/lib/actions";
+import { logoutAction } from "@/lib/auth/server";
 
 interface Props {
   email: string;
@@ -34,11 +34,19 @@ export function UserMenu({ email, entity, entities }: Props) {
           )}
         </div>
         <div className="h-4 w-px bg-gray-200" />
-        <button onClick={handleLogout} className="text-sm text-gray-500 transition-colors hover:text-gray-900">
+        <button
+          onClick={handleLogout}
+          className="text-sm text-gray-500 transition-colors hover:text-gray-900"
+        >
           Logout
         </button>
       </div>
-      <EntityChangeDialog isOpen={isDialogOpen} onClose={() => setIsDialogOpen(false)} currentEntity={entity || null} entities={entities} />
+      <EntityChangeDialog
+        isOpen={isDialogOpen}
+        onClose={() => setIsDialogOpen(false)}
+        currentEntity={entity || null}
+        entities={entities}
+      />
     </>
   );
 }

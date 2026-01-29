@@ -16,7 +16,13 @@ interface Props {
   allowCustom?: boolean;
 }
 
-export function EntityCombobox({ value, onChange, entities, placeholder = "Search entities...", allowCustom = true }: Props) {
+export function EntityCombobox({
+  value,
+  onChange,
+  entities,
+  placeholder = "Search entities...",
+  allowCustom = true,
+}: Props) {
   const [query, setQuery] = useState(value);
   const [filtered, setFiltered] = useState<EntityOption[]>(entities);
   const [open, setOpen] = useState(false);
@@ -33,7 +39,13 @@ export function EntityCombobox({ value, onChange, entities, placeholder = "Searc
       return;
     }
     const q = query.toLowerCase();
-    setFiltered(entities.filter((e) => e.entity.toLowerCase().includes(q) || e.entity_long?.toLowerCase().includes(q)));
+    setFiltered(
+      entities.filter(
+        (e) =>
+          e.entity.toLowerCase().includes(q) ||
+          e.entity_long?.toLowerCase().includes(q),
+      ),
+    );
   }, [query, entities]);
 
   const handleChange = (val: string) => {
@@ -50,7 +62,10 @@ export function EntityCombobox({ value, onChange, entities, placeholder = "Searc
     setHighlighted(-1);
   };
 
-  const showCustomOption = allowCustom && query && !entities.some((e) => e.entity.toLowerCase() === query.toLowerCase());
+  const showCustomOption =
+    allowCustom &&
+    query &&
+    !entities.some((e) => e.entity.toLowerCase() === query.toLowerCase());
   const totalItems = filtered.length + (showCustomOption ? 1 : 0);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -66,8 +81,10 @@ export function EntityCombobox({ value, onChange, entities, placeholder = "Searc
         break;
       case "Enter":
         e.preventDefault();
-        if (highlighted >= 0 && highlighted < filtered.length) handleSelect(filtered[highlighted]);
-        else if (showCustomOption && highlighted === filtered.length) handleSelect(query);
+        if (highlighted >= 0 && highlighted < filtered.length)
+          handleSelect(filtered[highlighted]);
+        else if (showCustomOption && highlighted === filtered.length)
+          handleSelect(query);
         break;
       case "Escape":
         setOpen(false);
@@ -78,7 +95,10 @@ export function EntityCombobox({ value, onChange, entities, placeholder = "Searc
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(e.target as Node)
+      ) {
         setOpen(false);
       }
     };
@@ -89,7 +109,7 @@ export function EntityCombobox({ value, onChange, entities, placeholder = "Searc
   return (
     <div ref={containerRef} className="relative w-full">
       <div className="relative">
-        <Building2 className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+        <Building2 className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-gray-400" />
         <input
           type="text"
           value={query}
@@ -97,12 +117,12 @@ export function EntityCombobox({ value, onChange, entities, placeholder = "Searc
           onKeyDown={handleKeyDown}
           onFocus={() => setOpen(true)}
           placeholder={placeholder}
-          className="w-full rounded-lg border border-gray-300 py-2 pl-10 pr-4 text-sm focus:border-un-blue focus:outline-none focus:ring-1 focus:ring-un-blue"
+          className="w-full rounded-lg border border-gray-300 py-2 pr-4 pl-10 text-sm focus:border-un-blue focus:ring-1 focus:ring-un-blue focus:outline-none"
         />
       </div>
 
       {open && (filtered.length > 0 || showCustomOption) && (
-        <div className="absolute z-50 mt-1 w-full max-h-60 overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-lg">
+        <div className="absolute z-50 mt-1 max-h-60 w-full overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-lg">
           {filtered.map((entity, i) => (
             <button
               key={entity.entity}
@@ -111,8 +131,14 @@ export function EntityCombobox({ value, onChange, entities, placeholder = "Searc
               onMouseEnter={() => setHighlighted(i)}
               className={`w-full px-3 py-2 text-left ${highlighted === i ? "bg-gray-100" : ""}`}
             >
-              <span className="text-sm font-medium text-un-blue">{entity.entity}</span>
-              {entity.entity_long && <p className="truncate text-xs text-gray-500">{entity.entity_long}</p>}
+              <span className="text-sm font-medium text-un-blue">
+                {entity.entity}
+              </span>
+              {entity.entity_long && (
+                <p className="truncate text-xs text-gray-500">
+                  {entity.entity_long}
+                </p>
+              )}
             </button>
           ))}
           {showCustomOption && (

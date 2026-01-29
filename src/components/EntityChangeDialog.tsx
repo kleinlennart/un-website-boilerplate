@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { EntityCombobox, type EntityOption } from "./EntityCombobox";
-import { updateEntityAction } from "@/lib/actions";
+import { updateEntityAction } from "@/lib/auth/server";
 
 interface Props {
   isOpen: boolean;
@@ -12,7 +12,12 @@ interface Props {
   entities: EntityOption[];
 }
 
-export function EntityChangeDialog({ isOpen, onClose, currentEntity, entities }: Props) {
+export function EntityChangeDialog({
+  isOpen,
+  onClose,
+  currentEntity,
+  entities,
+}: Props) {
   const [selectedEntity, setSelectedEntity] = useState("");
   const [otherEntity, setOtherEntity] = useState("");
   const [loading, setLoading] = useState(false);
@@ -27,7 +32,10 @@ export function EntityChangeDialog({ isOpen, onClose, currentEntity, entities }:
   }, [isOpen, currentEntity]);
 
   const handleSubmit = async () => {
-    const entity = selectedEntity === "Other – Please Specify" ? otherEntity.trim() : selectedEntity;
+    const entity =
+      selectedEntity === "Other – Please Specify"
+        ? otherEntity.trim()
+        : selectedEntity;
     if (!entity) {
       setError("Please select an entity");
       return;
@@ -53,17 +61,27 @@ export function EntityChangeDialog({ isOpen, onClose, currentEntity, entities }:
   return (
     <>
       <div className="fixed inset-0 z-50 bg-black/50" onClick={onClose} />
-      <div className="fixed left-1/2 top-1/2 z-50 w-full max-w-sm -translate-x-1/2 -translate-y-1/2 rounded-lg bg-white p-6 shadow-xl">
+      <div className="fixed top-1/2 left-1/2 z-50 w-full max-w-sm -translate-x-1/2 -translate-y-1/2 rounded-lg bg-white p-6 shadow-xl">
         <div className="mb-4 flex items-center justify-between">
           <h2 className="text-lg font-semibold text-gray-900">Update Entity</h2>
-          <button onClick={onClose} className="rounded-lg p-1 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600">
+          <button
+            onClick={onClose}
+            className="rounded-lg p-1 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600"
+          >
             <X className="h-5 w-5" />
           </button>
         </div>
         <div className="space-y-4">
           <div>
-            <label className="mb-2 block text-sm font-medium text-gray-700">Select your organisational entity</label>
-            <EntityCombobox value={selectedEntity} onChange={setSelectedEntity} entities={entities} placeholder="Choose entity..." />
+            <label className="mb-2 block text-sm font-medium text-gray-700">
+              Select your organisational entity
+            </label>
+            <EntityCombobox
+              value={selectedEntity}
+              onChange={setSelectedEntity}
+              entities={entities}
+              placeholder="Choose entity..."
+            />
           </div>
           {selectedEntity === "Other – Please Specify" && (
             <input
@@ -76,12 +94,20 @@ export function EntityChangeDialog({ isOpen, onClose, currentEntity, entities }:
           )}
           {error && <p className="text-sm text-red-600">{error}</p>}
           <div className="flex gap-3">
-            <button onClick={onClose} className="flex-1 rounded-lg border border-gray-300 px-4 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50">
+            <button
+              onClick={onClose}
+              className="flex-1 rounded-lg border border-gray-300 px-4 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50"
+            >
               Cancel
             </button>
             <button
               onClick={handleSubmit}
-              disabled={loading || !selectedEntity || (selectedEntity === "Other – Please Specify" && !otherEntity.trim())}
+              disabled={
+                loading ||
+                !selectedEntity ||
+                (selectedEntity === "Other – Please Specify" &&
+                  !otherEntity.trim())
+              }
               className="flex-1 rounded-lg bg-un-blue px-4 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {loading ? "Updating..." : "Update"}

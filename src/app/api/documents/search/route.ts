@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { query } from "@/lib/db";
+import { query } from "@/lib/db/db";
 
 interface DocumentRow {
   symbol: string;
@@ -17,13 +17,15 @@ export async function GET(req: NextRequest) {
      WHERE symbol ILIKE $1 || '%' OR proper_title ILIKE '%' || $1 || '%'
      ORDER BY CASE WHEN symbol ILIKE $1 || '%' THEN 0 ELSE 1 END, date_year DESC NULLS LAST
      LIMIT 20`,
-    [q]
+    [q],
   );
 
-  return NextResponse.json(rows.map((r) => ({
-    symbol: r.symbol,
-    title: r.proper_title?.replace(/\s*:\s*$/, "").trim() || null,
-    body: r.issuing_body,
-    year: r.date_year,
-  })));
+  return NextResponse.json(
+    rows.map((r) => ({
+      symbol: r.symbol,
+      title: r.proper_title?.replace(/\s*:\s*$/, "").trim() || null,
+      body: r.issuing_body,
+      year: r.date_year,
+    })),
+  );
 }

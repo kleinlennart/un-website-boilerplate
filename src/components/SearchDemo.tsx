@@ -12,7 +12,12 @@ export function SearchDemo({ entities }: Props) {
   const [entityValue, setEntityValue] = useState("");
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-      <EntityCombobox value={entityValue} onChange={setEntityValue} entities={entities} placeholder="Search entities..." />
+      <EntityCombobox
+        value={entityValue}
+        onChange={setEntityValue}
+        entities={entities}
+        placeholder="Search entities..."
+      />
       <DocumentSearch placeholder="Search documents..." />
     </div>
   );
