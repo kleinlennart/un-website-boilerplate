@@ -36,7 +36,7 @@ git checkout template-with-auth
 ### 1. Install dependencies
 
 ```bash
-npm install
+pnpm install
 ```
 
 ### 2. Configure environment
@@ -72,7 +72,7 @@ INSERT INTO myapp.allowed_domains (entity, domain) VALUES
 ### 4. Run
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser.
@@ -136,21 +136,21 @@ sql/
 
 ### Check for issues
 ```bash
-npm audit          # Security vulnerabilities
-npm outdated       # Outdated packages
-npm run lint       # ESLint errors
-npx tsc --noEmit   # TypeScript errors
+pnpm audit         # Security vulnerabilities
+pnpm outdated      # Outdated packages
+pnpm lint          # ESLint errors
+pnpm tsc --noEmit  # TypeScript errors
 ```
 
 ### Update packages
 ```bash
-npm update                                              # Safe patch/minor updates
-npm install next@latest eslint-config-next@latest       # Update Next.js
+pnpm update                                             # Safe patch/minor updates
+pnpm add next@latest eslint-config-next@latest           # Update Next.js
 ```
 
 ### Clean install (if issues occur)
 ```bash
-rm -rf node_modules .next && npm install
+rm -rf node_modules .next && pnpm install
 ```
 
 ## Good to know

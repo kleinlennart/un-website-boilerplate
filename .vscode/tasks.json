@@ -1,11 +1,55 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"label": "Install Dependencies",
-			"type": "shell",
-			"command": "uv sync && npm install",
-			"group": "build"
-		}
-	]
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "pnpm build",
+            "problemMatcher": "$tsc",
+            "group": "build"
+        },
+        {
+            "label": "dev",
+            "type": "shell",
+            "command": "pnpm dev",
+            "isBackground": true,
+            "problemMatcher": "$tsc-watch",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "start",
+            "type": "shell",
+            "command": "pnpm start",
+            "isBackground": true,
+            "problemMatcher": [ ]
+        },
+        {
+            "label": "typecheck",
+            "type": "shell",
+            "command": "pnpm typecheck",
+            "problemMatcher": "$tsc"
+        },
+        {
+            "label": "lint",
+            "type": "shell",
+            "command": "pnpm lint",
+            "problemMatcher": "$eslint-stylish"
+        },
+        {
+            "label": "format",
+            "type": "shell",
+            "command": "pnpm format",
+            "problemMatcher": [ ]
+        },
+        {
+            "label": "install",
+            "type": "shell",
+            "command": "pnpm install",
+            "problemMatcher": [ ],
+            "group": "build"
+        }
+    ]
 }
