@@ -135,7 +135,7 @@ export function DocumentSearch({
       {open && query.length >= 2 && results.length === 0 && !searching && (
         <div className="absolute z-50 mt-1 w-full rounded-lg border border-gray-200 bg-white p-3 shadow-lg">
           <p className="text-sm text-gray-500">
-            No documents found for "{query}"
+            No documents found for &ldquo;{query}&rdquo;
           </p>
         </div>
       )}

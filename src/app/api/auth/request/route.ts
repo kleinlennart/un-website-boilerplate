@@ -3,8 +3,8 @@ import {
   isAllowedDomain,
   createMagicToken,
   recentTokenExists,
-} from "@/lib/auth/auth";
-import { sendMagicLink } from "@/lib/auth/mail";
+} from "@/features/auth/service";
+import { sendMagicLink } from "@/features/auth/mail";
 
 export async function POST(request: Request) {
   let email: unknown;

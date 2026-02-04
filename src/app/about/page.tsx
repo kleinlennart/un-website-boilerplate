@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { getCurrentUser } from "@/lib/auth/auth";
+import { getCurrentUser } from "@/features/auth/service";
 import { Header, SITE_TITLE, SITE_SUBTITLE } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 

@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { Header } from "@/components/Header";
-import { VerifyForm } from "@/components/VerifyForm";
+import { VerifyForm } from "@/features/auth/ui/VerifyForm";
 import { fetchEntities } from "@/lib/data/entities";
 
 export const dynamic = "force-dynamic";

@@ -2,11 +2,11 @@
 
 import { useSearchParams, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import { EntityCombobox, type EntityOption } from "./EntityCombobox";
+import { EntityCombobox, type EntityOption } from "../../../components/EntityCombobox";
 import {
   checkEntityForTokenAction,
   verifyMagicTokenAction,
-} from "@/lib/auth/server";
+} from "@/features/auth/commands";
 
 interface Props {
   entities: EntityOption[];
@@ -30,7 +30,7 @@ export function VerifyForm({ entities }: Props) {
       return;
     }
     checkEntityForTokenAction(token)
-      .then((result) => {
+      .then((result: Awaited<ReturnType<typeof checkEntityForTokenAction>>) => {
         if (!result.success) {
           setError(result.error);
         } else if (result.data) {

@@ -1,20 +1,20 @@
 "use server";
 
-import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
-import {
-  isAllowedDomain,
-  createMagicToken,
-  verifyMagicToken,
-  upsertUser,
-  createSession,
-  clearSession,
-  getCurrentUser,
-  recentTokenExists,
-} from "./auth";
+import { redirect } from "next/navigation";
+import { tables } from "@/lib/db/config";
+import { query } from "@/lib/db/db";
 import { sendMagicLink } from "./mail";
-import { query } from "../db/db";
-import { tables } from "../db/config";
+import {
+    clearSession,
+    createMagicToken,
+    createSession,
+    getCurrentUser,
+    isAllowedDomain,
+    recentTokenExists,
+    upsertUser,
+    verifyMagicToken,
+} from "./service";
 
 type ActionResult<T = void> =
   | { success: true; data?: T }

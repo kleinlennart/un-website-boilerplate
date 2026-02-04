@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { EntityCombobox, type EntityOption } from "./EntityCombobox";
-import { updateEntityAction } from "@/lib/auth/server";
+import { updateEntityAction } from "@/features/auth/commands";
 
 interface Props {
   isOpen: boolean;

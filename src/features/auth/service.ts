@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import { randomBytes, createHmac, timingSafeEqual } from "crypto";
-import { query } from "../db/db";
-import { tables } from "../db/config";
+import { tables } from "../../lib/db/config";
+import { query } from "../../lib/db/db";
 
 const getSecret = () => {
   const secret = process.env.AUTH_SECRET;

@@ -1,7 +1,7 @@
 import { Github } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { getCurrentUser } from "@/lib/auth/auth";
+import { getCurrentUser } from "@/features/auth/service";
 import { fetchEntities } from "@/lib/data/entities";
 import { SearchDemo } from "@/components/SearchDemo";
 

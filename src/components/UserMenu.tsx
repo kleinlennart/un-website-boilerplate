@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { EntityChangeDialog } from "./EntityChangeDialog";
 import type { EntityOption } from "./EntityCombobox";
-import { logoutAction } from "@/lib/auth/server";
+import { logoutAction } from "@/features/auth/commands";
 
 interface Props {
   email: string;
