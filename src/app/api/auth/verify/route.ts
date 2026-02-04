@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
-import { verifyMagicToken, upsertUser, createSession } from "@/features/auth/service";
+import {
+  verifyMagicToken,
+  upsertUser,
+  createSession,
+} from "@/features/auth/service";
 import { query } from "@/lib/db/db";
 import { tables } from "@/lib/db/config";
 

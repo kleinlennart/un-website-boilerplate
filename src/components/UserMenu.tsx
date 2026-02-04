@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { EntityChangeDialog } from "./EntityChangeDialog";
 import type { EntityOption } from "./EntityCombobox";
-import { logoutAction } from "@/features/auth/commands";
+import { logout } from "@/features/auth/commands";
 
 interface Props {
   email: string;
@@ -15,7 +15,7 @@ export function UserMenu({ email, entity, entities }: Props) {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   async function handleLogout() {
-    await logoutAction();
+    await logout();
   }
 
   return (

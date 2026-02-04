@@ -2,28 +2,25 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { getBaseUrl } from "@/lib/get-base-url";
 import { tables } from "@/lib/db/config";
 import { query } from "@/lib/db/db";
 import { sendMagicLink } from "./mail";
 import {
-    clearSession,
-    createMagicToken,
-    createSession,
-    getCurrentUser,
-    isAllowedDomain,
-    recentTokenExists,
-    upsertUser,
-    verifyMagicToken,
+  clearSession,
+  createMagicToken,
+  createSession,
+  getCurrentUser,
+  isAllowedDomain,
+  recentTokenExists,
+  upsertUser,
+  verifyMagicToken as verifyMagicTokenService,
 } from "./service";
 
 type ActionResult<T = void> =
   | { success: true; data?: T }
   | { success: false; error: string };
 
-export async function requestMagicLink(
-  email: string,
-): Promise<ActionResult> {
+export async function requestMagicLink(email: string): Promise<ActionResult> {
   if (!email || typeof email !== "string" || !email.trim()) {
     return { success: false, error: "Email required" };
   }
@@ -82,7 +79,7 @@ export async function verifyMagicToken(
   if (!token || typeof token !== "string") {
     return { success: false, error: "Missing token" };
   }
-  const email = await verifyMagicToken(token);
+  const email = await verifyMagicTokenService(token);
   if (!email) {
     return { success: false, error: "Invalid or expired link" };
   }
@@ -98,9 +95,7 @@ export async function verifyMagicToken(
   return { success: true };
 }
 
-export async function updateEntity(
-  entity: string,
-): Promise<ActionResult> {
+export async function updateEntity(entity: string): Promise<ActionResult> {
   const user = await getCurrentUser();
   if (!user) {
     return { success: false, error: "Unauthorized" };

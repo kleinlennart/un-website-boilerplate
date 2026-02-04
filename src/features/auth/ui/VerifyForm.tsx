@@ -2,10 +2,13 @@
 
 import { useSearchParams, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import { EntityCombobox, type EntityOption } from "../../../components/EntityCombobox";
 import {
-  checkEntityForTokenAction,
-  verifyMagicTokenAction,
+  EntityCombobox,
+  type EntityOption,
+} from "../../../components/EntityCombobox";
+import {
+  checkEntityForToken,
+  verifyMagicToken,
 } from "@/features/auth/commands";
 
 interface Props {
@@ -29,8 +32,8 @@ export function VerifyForm({ entities }: Props) {
       queueMicrotask(() => setChecking(false));
       return;
     }
-    checkEntityForTokenAction(token)
-      .then((result: Awaited<ReturnType<typeof checkEntityForTokenAction>>) => {
+    checkEntityForToken(token)
+      .then((result: Awaited<ReturnType<typeof checkEntityForToken>>) => {
         if (!result.success) {
           setError(result.error);
         } else if (result.data) {
@@ -58,7 +61,7 @@ export function VerifyForm({ entities }: Props) {
       return;
     }
     setLoading(true);
-    const result = await verifyMagicTokenAction(token, entity);
+    const result = await verifyMagicToken(token, entity);
     if (!result.success) {
       setError(result.error);
       setLoading(false);

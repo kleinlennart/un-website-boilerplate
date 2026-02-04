@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { EntityCombobox, type EntityOption } from "./EntityCombobox";
-import { updateEntityAction } from "@/features/auth/commands";
+import { updateEntity } from "@/features/auth/commands";
 
 interface Props {
   isOpen: boolean;
@@ -43,7 +43,7 @@ export function EntityChangeDialog({
     setLoading(true);
     setError(null);
     try {
-      const result = await updateEntityAction(entity);
+      const result = await updateEntity(entity);
       if (result.success) {
         window.location.reload();
       } else {
