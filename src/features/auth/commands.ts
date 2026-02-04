@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { getBaseUrl } from "@/lib/get-base-url";
 import { tables } from "@/lib/db/config";
 import { query } from "@/lib/db/db";
 import { sendMagicLink } from "./mail";
@@ -20,7 +21,7 @@ type ActionResult<T = void> =
   | { success: true; data?: T }
   | { success: false; error: string };
 
-export async function requestMagicLinkAction(
+export async function requestMagicLink(
   email: string,
 ): Promise<ActionResult> {
   if (!email || typeof email !== "string" || !email.trim()) {
@@ -47,7 +48,7 @@ export async function requestMagicLinkAction(
   }
 }
 
-export async function checkEntityForTokenAction(
+export async function checkEntityForToken(
   token: string,
 ): Promise<
   ActionResult<{ email: string; hasEntity: boolean; entity: string | null }>
@@ -74,7 +75,7 @@ export async function checkEntityForTokenAction(
   };
 }
 
-export async function verifyMagicTokenAction(
+export async function verifyMagicToken(
   token: string,
   entity?: string,
 ): Promise<ActionResult> {
@@ -97,7 +98,7 @@ export async function verifyMagicTokenAction(
   return { success: true };
 }
 
-export async function updateEntityAction(
+export async function updateEntity(
   entity: string,
 ): Promise<ActionResult> {
   const user = await getCurrentUser();
@@ -115,7 +116,7 @@ export async function updateEntityAction(
   return { success: true };
 }
 
-export async function logoutAction(): Promise<void> {
+export async function logout(): Promise<void> {
   await clearSession();
   redirect("/about");
 }

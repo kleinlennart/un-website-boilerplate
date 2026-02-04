@@ -10,7 +10,7 @@ const transporter = nodemailer.createTransport({
 });
 
 export async function sendMagicLink(email: string, token: string) {
-  const baseUrl = getBaseUrl();
+  const baseUrl = await getBaseUrl();
   const link = `${baseUrl}/verify?token=${token}`;
   const logoUrl = `${baseUrl}/images/UN_Logo_Stacked_Colour_English.png`;
 
