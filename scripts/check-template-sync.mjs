@@ -19,7 +19,7 @@ for (const section of ["dependencies", "devDependencies", "scripts"]) {
       ? ["pg", "nodemailer", "server-only"]
       : section === "devDependencies"
         ? ["@types/pg", "@types/nodemailer"]
-        : ["start", "db:bootstrap-entities", "test:db"],
+        : ["start", "db:bootstrap-entities", "db:setup-role", "test:db"],
   );
   for (const key of new Set([
     ...Object.keys(current[section]),
